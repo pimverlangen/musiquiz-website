@@ -1,0 +1,68 @@
+---
+import '../styles/global.css';
+import { config } from '../config';
+
+interface Props {
+  title?: string;
+  description?: string;
+  frontmatter?: {
+    title?: string;
+    description?: string;
+  };
+}
+
+const title = Astro.props.title ?? Astro.props.frontmatter?.title ?? config.name;
+const description = Astro.props.description ?? Astro.props.frontmatter?.description ?? config.description;
+
+const canonicalURL = new URL(Astro.url.pathname, Astro.site);
+---
+
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <link rel="icon" type="image/x-icon" href={`${import.meta.env.BASE_URL}favicon.ico`} />
+    <link rel="apple-touch-icon" href={`${import.meta.env.BASE_URL}apple-touch-icon.png`} />
+    <link rel="canonical" href={canonicalURL} />
+
+    <title>{title}</title>
+    <meta name="description" content={description} />
+
+    <!-- Open Graph -->
+    <meta property="og:type" content="website" />
+    <meta property="og:url" content={canonicalURL} />
+    <meta property="og:title" content={title} />
+    <meta property="og:description" content={description} />
+    <meta property="og:image" content={new URL(`${import.meta.env.BASE_URL}og-image.png`, Astro.site)} />
+
+    <!-- Twitter -->
+    <meta name="twitter:card" content="summary_large_image" />
+    <meta name="twitter:title" content={title} />
+    <meta name="twitter:description" content={description} />
+    <meta name="twitter:image" content={new URL(`${import.meta.env.BASE_URL}og-image.png`, Astro.site)} />
+  </head>
+  <body class="bg-navy text-white min-h-screen flex flex-col antialiased">
+    <nav class="w-full max-w-5xl mx-auto px-6 py-6 flex items-center justify-between">
+      <a href={import.meta.env.BASE_URL} class="text-xl font-bold tracking-tight text-white hover:text-purple-light transition-colors">
+        {config.name}
+      </a>
+      <a href={`${import.meta.env.BASE_URL}privacy`} class="text-sm text-gray-400 hover:text-white transition-colors">
+        Privacy
+      </a>
+    </nav>
+
+    <main class="flex-1">
+      <slot />
+    </main>
+
+    <footer class="w-full max-w-5xl mx-auto px-6 py-8 border-t border-white/10 text-center text-sm text-gray-400">
+      <p>&copy; {new Date().getFullYear()} {config.name}. All rights reserved.</p>
+      <p class="mt-1">
+        <a href={`${import.meta.env.BASE_URL}privacy`} class="hover:text-white transition-colors">Privacy Policy</a>
+        &middot;
+        <a href={`mailto:${config.email}`} class="hover:text-white transition-colors">Contact</a>
+      </p>
+    </footer>
+  </body>
+</html>

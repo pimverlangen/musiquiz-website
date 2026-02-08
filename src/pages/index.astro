@@ -1,0 +1,14 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+import Hero from '../components/Hero.astro';
+import Features from '../components/Features.astro';
+import AppStoreLinks from '../components/AppStoreLinks.astro';
+import { config } from '../config';
+---
+
+<BaseLayout title={`${config.name} — ${config.tagline}`}>
+  <Hero>
+    <AppStoreLinks />
+  </Hero>
+  <Features />
+</BaseLayout>

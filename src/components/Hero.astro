@@ -1,0 +1,25 @@
+---
+import { Image } from 'astro:assets';
+import logo from '../assets/branding/logo_v2.png';
+import { config } from '../config';
+---
+
+<section class="w-full max-w-5xl mx-auto px-6 py-16 md:py-24 text-center">
+  <Image
+    src={logo}
+    alt={`${config.name} logo`}
+    width={160}
+    height={160}
+    densities={[1.5, 2]}
+    class="mx-auto mb-8 rounded-3xl shadow-lg shadow-purple/20"
+  />
+  <h1 class="text-4xl md:text-6xl font-extrabold tracking-tight mb-4">
+    <span class="bg-gradient-to-r from-purple-light to-purple bg-clip-text text-transparent">
+      {config.name}
+    </span>
+  </h1>
+  <p class="text-lg md:text-xl text-gray-300 max-w-2xl mx-auto mb-8">
+    {config.tagline}. Identify songs from progressive hints or place them on a timeline by release year.
+  </p>
+  <slot />
+</section>

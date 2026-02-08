@@ -1,0 +1,65 @@
+---
+import { Image } from 'astro:assets';
+
+import playlistOverview from '../assets/screenshots/playlist_overview.jpg';
+import classicGuess from '../assets/screenshots/classic_guess.jpg';
+import classicGuessHints from '../assets/screenshots/classic_guess_hints.jpg';
+import classicCorrect from '../assets/screenshots/classic_correct.jpg';
+import timeline from '../assets/screenshots/timeline.jpg';
+import timelineDrag from '../assets/screenshots/timeline_drag.jpg';
+import timelineCorrect from '../assets/screenshots/timeline_correct.jpg';
+
+const portraitScreenshots = [
+  { src: playlistOverview, alt: 'Choose from curated playlists' },
+  { src: classicGuess, alt: 'Guess the mystery song' },
+  { src: classicGuessHints, alt: 'Reveal hints to help you guess' },
+  { src: classicCorrect, alt: 'Score points and track standings' },
+];
+
+const landscapeScreenshots = [
+  { src: timeline, alt: 'Build your timeline by release year' },
+  { src: timelineDrag, alt: 'Drag songs into the correct position' },
+  { src: timelineCorrect, alt: 'Correct placements grow your collection' },
+];
+---
+
+<section class="w-full max-w-6xl mx-auto px-6 py-16">
+  <h2 class="text-2xl md:text-3xl font-bold text-center mb-4">See it in action</h2>
+  <p class="text-gray-400 text-center mb-12 max-w-2xl mx-auto">
+    Beautiful playlists, intuitive gameplay, and multiplayer fun
+  </p>
+
+  <!-- Portrait screenshots (Classic Mode) -->
+  <div class="mb-12">
+    <h3 class="text-lg font-medium text-purple-light mb-6 text-center">Classic Mode</h3>
+    <div class="grid grid-cols-2 md:grid-cols-4 gap-4">
+      {portraitScreenshots.map((screenshot) => (
+        <div class="rounded-xl overflow-hidden shadow-lg shadow-black/20 border border-white/5">
+          <Image
+            src={screenshot.src}
+            alt={screenshot.alt}
+            width={300}
+            class="w-full h-auto"
+          />
+        </div>
+      ))}
+    </div>
+  </div>
+
+  <!-- Landscape screenshots (Timeline Mode) -->
+  <div>
+    <h3 class="text-lg font-medium text-purple-light mb-6 text-center">Timeline Mode</h3>
+    <div class="grid md:grid-cols-3 gap-4">
+      {landscapeScreenshots.map((screenshot) => (
+        <div class="rounded-xl overflow-hidden shadow-lg shadow-black/20 border border-white/5">
+          <Image
+            src={screenshot.src}
+            alt={screenshot.alt}
+            width={500}
+            class="w-full h-auto"
+          />
+        </div>
+      ))}
+    </div>
+  </div>
+</section>

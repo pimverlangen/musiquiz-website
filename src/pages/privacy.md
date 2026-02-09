@@ -45,7 +45,7 @@ This data never leaves your device and is not accessible to us or any third part
 
 <h2 class="text-2xl font-semibold mb-6 text-purple-light">Website</h2>
 <p class="text-gray-300 mb-12">
-This website (<a href="https://pimverlangen.github.io/musiquiz-website" class="text-purple-light hover:underline">MusiQuiz</a>) is a static site. It does not use cookies, analytics, or tracking of any kind. No personal data is collected, stored, or processed when you visit.
+This website (<a href="https://musiquiz.pimverlangen.com" class="text-purple-light hover:underline">MusiQuiz</a>) is a static site. It does not use cookies, analytics, or tracking of any kind. No personal data is collected, stored, or processed when you visit.
 </p>
 
 <h2 class="text-2xl font-semibold mb-6 text-purple-light">Children's Privacy</h2>
